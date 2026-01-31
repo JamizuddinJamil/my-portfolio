@@ -76,26 +76,21 @@ if (!isDesktop) {
 }
 
 // 3. INTERACTIVE ELEMENTS (Desktop Only)
-if (isDesktop) {
+if (isDesktop && cursor) {
+    document.addEventListener('mousemove', (e) => {
+        cursor.style.left = e.clientX + 'px';
+        cursor.style.top = e.clientY + 'px';
+    });
+
     const interactives = document.querySelectorAll('.bento-item, button, a, .magnetic, .about-image-container');
     interactives.forEach(el => {
         el.addEventListener('mouseenter', () => {
             cursor.style.transform = 'scale(6)';
-            cursor.style.background = 'rgba(255,255,255,0.2)'; // Bagi nampak transparent sikit masa scale
+            cursor.style.background = 'rgba(255,255,255,0.2)';
         });
         el.addEventListener('mouseleave', () => {
             cursor.style.transform = 'scale(1)';
             cursor.style.background = 'var(--accent)';
         });
-        
-        if (el.classList.contains('magnetic')) {
-            el.addEventListener('mousemove', (e) => {
-                const b = el.getBoundingClientRect();
-                const x = e.clientX - b.left - b.width/2;
-                const y = e.clientY - b.top - b.height/2;
-                el.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
-            });
-            el.addEventListener('mouseleave', () => el.style.transform = '');
-        }
     });
 }

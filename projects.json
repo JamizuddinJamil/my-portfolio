@@ -1,0 +1,30 @@
+[
+    {
+        "title": "LEGASI YZ",
+        "category": "web",
+        "categoryText": "Web Development",
+        "image": "Beige Minimalist Mockup Instagram Post.jpg",
+        "shortDesc": "Landing page design with focus on minimalist aesthetic.",
+        "fullDesc": "A high-performance landing page built for Legasi YZ. Focuses on minimal aesthetics and fast loading speeds using Next.js and GSAP for smooth animations.",
+        "stack": ["HTML", "CSS", "JavaScript"]
+    },
+    {
+        "title": "FINANCE TRACKER",
+        "category": "app",
+        "categoryText": "App Development",
+        "image": "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=800",
+        "shortDesc": "iOS/Android cross-platform budgeting application.",
+        "fullDesc": "Full-stack mobile application that allows users to track their daily expenses with real-time data visualization.",
+        "stack": ["React Native", "Supabase", "Chart.js"]
+    },
+
+    {
+        "title": "UI/UX DESIGN PORTFOLIO",
+        "category": "design",
+        "categoryText": "UI/UX Design",
+        "image": "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=800",
+        "shortDesc": "iOS/Android cross-platform budgeting application.",
+        "fullDesc": "Full-stack mobile application that allows users to track their daily expenses with real-time data visualization.",
+        "stack": ["React Native", "Supabase", "Chart.js"]
+    }
+]
