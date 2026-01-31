@@ -6,7 +6,8 @@
         "image": "Beige Minimalist Mockup Instagram Post.jpg",
         "shortDesc": "Landing page design with focus on minimalist aesthetic.",
         "fullDesc": "A high-performance landing page built for Legasi YZ. Focuses on minimal aesthetics and fast loading speeds using Next.js and GSAP for smooth animations.",
-        "stack": ["HTML", "CSS", "JavaScript"]
+        "stack": ["HTML", "CSS", "JavaScript"],
+        "link": "https://jamizuddinjamil.github.io/legasi-yz-transport/" 
     },
     {
         "title": "EXPENSE SPLITTER APP",
@@ -14,11 +15,10 @@
         "categoryText": "App Development",
         "image": "Gemini_Generated_Image_e1kh89e1kh89e1kh.jpg",
         "shortDesc": "iOS/Android cross-platform budgeting application.",
-        "fullDesc": "A comprehensive full-stack financial tool designed to simplify group expenses. It features an automated debt-balancing algorithm that settles complex IOUs efficiently, integrated with real-time data synchronization and a clean, user-centric interface for tracking shared costs among friends or housemates. ",
+        "fullDesc": "A comprehensive full-stack financial tool designed to simplify group expenses. It features an automated debt-balancing algorithm that settles complex IOUs efficiently, integrated with real-time data synchronization and a clean, user-centric interface for tracking shared costs among friends or housemates.",
         "stack": ["React Native", "Vite"],
-        "link": "https://expense-splitter-lovat.vercel.app/" 
+        "link": "https://expense-splitter-lovat.vercel.app/"
     },
-
     {
         "title": "UI/UX DESIGN PORTFOLIO",
         "category": "design",
@@ -26,6 +26,7 @@
         "image": "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=800",
         "shortDesc": "A modern UI/UX design portfolio showcasing creative work.",
         "fullDesc": "Full-stack mobile application that allows users to track their daily expenses with real-time data visualization.",
-        "stack": ["React Native", "Supabase", "Chart.js"]
+        "stack": ["React Native", "Supabase", "Chart.js"],
+        "link": "#"
     }
 ]

@@ -299,10 +299,10 @@
                 </div>
 
                 <div style="text-align: center; margin-top: 20px;">
-        <a id="modalLink" href="https://expense-splitter-lovat.vercel.app/" target="_blank" rel="noopener noreferrer" style="color: var(--accent); text-decoration: underline; font-weight: bold;">
-            Visit Here
-        </a>
-    </div>
+    <a id="modalLink" href="#" target="_blank" rel="noopener noreferrer" style="color: var(--accent); text-decoration: underline; font-weight: bold;">
+        Visit Here
+    </a>
+</div>
             </div>
         </div>
     </div>
@@ -366,6 +366,8 @@
                         document.getElementById("modalImg").src = project.image;
                         document.getElementById("modalCategory").innerText = project.categoryText;
                         document.getElementById("modalDescription").innerText = project.fullDesc;
+                        // Tambah ini dalam fungsi yang buka modal anda
+document.getElementById('modalLink').href = project.link;
                         document.getElementById("modalStack").innerHTML =
                             project.stack.map(s => `<span class="tech-badge">${s}</span>`).join('');
 
