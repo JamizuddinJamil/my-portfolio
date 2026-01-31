@@ -305,3 +305,117 @@ section {
     }
 }
 
+/* Contact Section Styles */
+.contact-container {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    background: var(--glass);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(15px);
+    padding: 60px;
+    border-radius: 40px;
+}
+
+.form-row {
+    display: flex;
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.input-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 25px;
+}
+
+.input-group label {
+    font-size: 10px;
+    letter-spacing: 3px;
+    font-weight: 700;
+    opacity: 0.6;
+}
+
+.input-group input, 
+.input-group textarea {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--glass-border);
+    border-radius: 12px;
+    padding: 15px;
+    color: var(--accent);
+    font-family: 'Space Grotesk', sans-serif;
+    outline: none;
+    transition: 0.3s;
+}
+
+.input-group input:focus, 
+.input-group textarea:focus {
+    border-color: var(--accent);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+/* Mobile Responsiveness for Form */
+@media (max-width: 1023px) {
+    .contact-container {
+        padding: 40px 20px;
+        border-radius: 24px;
+    }
+    
+    .form-row {
+        flex-direction: column;
+        gap: 0;
+    }
+    
+    .btn-project {
+        width: 100%;
+    }
+}
+
+/* WhatsApp Floating Button */
+.whatsapp-float {
+    content: "Chat with AJ";
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 60px;
+    height: 60px;
+    background-color: var(--accent); /* Mengikut tema putih/accent anda */
+    color: #050505; /* Ikon gelap atas latar putih */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000; /* Pastikan ia di atas segalanya */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    text-decoration: none;
+}
+
+.whatsapp-float svg {
+    width: 30px;
+    height: 30px;
+}
+
+.whatsapp-float:hover {
+    background-color: #25d366; /* Bertukar hijau WhatsApp bila hover */
+    opacity: 1;
+    color: #fff;
+    transform: scale(1.1) translateY(-5px);
+}
+
+/* Sembunyikan magnetic effect pada mobile jika perlu, 
+   tapi butang tetap kekal di penjuru */
+@media (max-width: 1023px) {
+    .whatsapp-float {
+        bottom: 20px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+    }
+    .whatsapp-float svg {
+        width: 25px;
+        height: 25px;
+    }
+}
