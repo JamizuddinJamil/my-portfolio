@@ -19,14 +19,15 @@
         "stack": ["React Native", "Vite"],
         "link": "https://expense-splitter-lovat.vercel.app/"
     },
-    {
-        "title": "UI/UX DESIGN PORTFOLIO",
-        "category": "design",
-        "categoryText": "UI/UX Design",
-        "image": "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?q=80&w=800",
-        "shortDesc": "A modern UI/UX design portfolio showcasing creative work.",
-        "fullDesc": "Full-stack mobile application that allows users to track their daily expenses with real-time data visualization.",
-        "stack": ["React Native", "Supabase", "Chart.js"],
-        "link": "#"
+        {
+        "title": "CLIENTFLOW CRM",
+        "category": "app",
+        "categoryText": "App Development",
+        "image": "clientflowcrmmockup.jpg",
+        "shortDesc": "ClientFlow is an all-in-one client management and onboarding platform designed to streamline professional workflows.",
+        "fullDesc": "ClientFlow is a modern, web-based CRM and project management solution built to eliminate the friction of client-facing operations. Targeted at freelancers, agencies, and consultants, the app centralizes the entire client lifecycle into a cohesive digital experience.",
+        "stack": ["Next.js", "React", "Tailwind CSS", "Vercel", "Vite"],
+        "link": "https://clientflow-woad.vercel.app/"
     }
+
 ]
