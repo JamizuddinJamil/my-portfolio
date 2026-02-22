@@ -1,0 +1,216 @@
+/* ============================================================
+   BLOG MODALS — modal.css
+   ============================================================ */
+
+/* ─── BACKDROP ──────────────────────────────────────────────── */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 10, 10, 0.65);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 1100;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.modal-backdrop.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ─── MODAL WRAPPER ─────────────────────────────────────────── */
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(24px) scale(0.98);
+  transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.modal.active {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+/* ─── MODAL INNER ───────────────────────────────────────────── */
+.modal-inner {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  width: min(680px, 100%);
+  max-height: 88vh;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.22);
+  overflow: hidden;
+}
+
+/* ─── MODAL HEADER ──────────────────────────────────────────── */
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.4rem 1.8rem;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+}
+
+.modal-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.modal-close {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--bg-alt);
+  color: var(--text-muted);
+  font-size: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition);
+  flex-shrink: 0;
+}
+
+.modal-close:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+  transform: rotate(90deg);
+}
+
+/* ─── MODAL BODY ────────────────────────────────────────────── */
+.modal-body {
+  padding: 2rem 1.8rem;
+  overflow-y: auto;
+  flex: 1;
+  scroll-behavior: smooth;
+}
+
+.modal-body::-webkit-scrollbar {
+  width: 4px;
+}
+
+.modal-body::-webkit-scrollbar-track {
+  background: var(--bg-alt);
+}
+
+.modal-body::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 99px;
+}
+
+.modal-body h2 {
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
+  color: var(--text);
+  margin-bottom: 1.6rem;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+/* ─── MODAL CONTENT ─────────────────────────────────────────── */
+.modal-content p {
+  font-size: 0.975rem;
+  line-height: 1.8;
+  color: var(--text-muted);
+  margin-bottom: 1.2rem;
+}
+
+.modal-content p:last-child {
+  margin-bottom: 0;
+}
+
+.modal-content em {
+  color: var(--text);
+  font-style: italic;
+}
+
+.modal-content code {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.85em;
+  background: var(--accent-light);
+  color: var(--accent);
+  padding: 0.15em 0.45em;
+  border-radius: 4px;
+  border: 1px solid rgba(77, 127, 255, 0.2);
+}
+
+/* ─── MODAL FOOTER ──────────────────────────────────────────── */
+.modal-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem 1.8rem;
+  border-top: 1px solid var(--border);
+  flex-shrink: 0;
+  background: var(--bg-alt);
+}
+
+.modal-read-time {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+/* ─── SIDEBAR LINK BUTTONS ──────────────────────────────────── */
+.sidebar-link-btn {
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  color: var(--text-muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  padding: 0;
+  transition: color var(--transition);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  width: 100%;
+}
+
+.sidebar-link-btn:hover {
+  color: var(--accent);
+}
+
+/* ─── BODY LOCK (no scroll when modal open) ─────────────────── */
+body.modal-open {
+  overflow: hidden;
+}
+
+/* ─── MOBILE ────────────────────────────────────────────────── */
+@media (max-width: 600px) {
+  .modal {
+    align-items: flex-end;
+    padding: 0;
+  }
+
+  .modal-inner {
+    border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+    max-height: 92vh;
+    width: 100%;
+  }
+
+  .modal-body {
+    padding: 1.5rem;
+  }
+
+  .modal-header,
+  .modal-footer {
+    padding: 1.1rem 1.5rem;
+  }
+}
