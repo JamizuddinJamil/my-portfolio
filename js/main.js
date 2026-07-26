@@ -1,218 +1,189 @@
-/* ============================================================
-   PORTFOLIO — main.js
-   Author: Abd Jamizuddin Bin Abd Jamil
-   ============================================================ */
-
-'use strict';
-
-/* ─── THEME TOGGLE ──────────────────────────────────────────── */
-(function initTheme() {
-  const saved = localStorage.getItem('portfolio-theme') || 'light';
-  document.documentElement.setAttribute('data-theme', saved);
-})();
+// ============================================================
+// Shared behaviors used across all pages. Every block checks
+// that its target element exists before running, so this one
+// file is safe to include on every page regardless of layout.
+// ============================================================
 
 document.addEventListener('DOMContentLoaded', () => {
-  /* ─── THEME ─────────────────────────────────────────────── */
-  const themeBtn = document.getElementById('theme-toggle');
 
-  function setTheme(theme) {
-    document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('portfolio-theme', theme);
-    if (themeBtn) {
-      themeBtn.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
-      themeBtn.textContent = theme === 'dark' ? '☀️' : '🌙';
-    }
+  // ---- header scroll state ----
+  const header = document.getElementById('site-header');
+  if (header) {
+    window.addEventListener('scroll', () => {
+      header.classList.toggle('scrolled', window.scrollY > 8);
+    }, { passive: true });
   }
 
-  const currentTheme = localStorage.getItem('portfolio-theme') || 'light';
-  setTheme(currentTheme);
-
-  if (themeBtn) {
-    themeBtn.addEventListener('click', () => {
-      const current = document.documentElement.getAttribute('data-theme');
-      setTheme(current === 'dark' ? 'light' : 'dark');
-    });
-  }
-
-  /* ─── MOBILE MENU ───────────────────────────────────────── */
-  const menuToggle = document.getElementById('menu-toggle');
-  const navLinks   = document.querySelector('.nav-links');
-
+  // ---- mobile menu ----
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
   if (menuToggle && navLinks) {
     menuToggle.addEventListener('click', () => {
       const open = navLinks.classList.toggle('open');
-      menuToggle.setAttribute('aria-expanded', String(open));
-      menuToggle.classList.toggle('active', open);
+      menuToggle.setAttribute('aria-expanded', open);
     });
-
-    navLinks.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        navLinks.classList.remove('open');
-        menuToggle.setAttribute('aria-expanded', 'false');
-        menuToggle.classList.remove('active');
-      });
-    });
+    navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+    }));
   }
 
-  /* ─── ACTIVE NAV LINK ───────────────────────────────────── */
-  const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-  document.querySelectorAll('.nav-links a').forEach(link => {
-    const href = link.getAttribute('href');
-    if (
-      href === currentPage ||
-      (currentPage === '' && href === 'index.html') ||
-      (currentPage === 'index.html' && href === 'index.html')
-    ) {
-      link.classList.add('active');
+  // ---- scroll reveal ----
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const revealEls = document.querySelectorAll('.reveal');
+  if (revealEls.length) {
+    if (reduceMotion) {
+      revealEls.forEach(el => el.classList.add('in'));
+    } else if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in');
+            io.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15 });
+      revealEls.forEach(el => io.observe(el));
+    } else {
+      revealEls.forEach(el => el.classList.add('in'));
     }
-  });
+  }
 
-  /* ─── SCROLL REVEAL ─────────────────────────────────────── */
-  const revealElements = document.querySelectorAll('.reveal');
-  if (revealElements.length) {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
+  // ---- terminal typing effect (home page hero only) ----
+  const typeTarget = document.getElementById('typeTarget');
+  if (typeTarget) {
+    const script = [
+      { prompt: '$ ', text: 'whoami', type: 'cmd' },
+      { text: 'Abd Jamizuddin — Full Stack Developer\nJohor, Malaysia', type: 'out' },
+      { prompt: '$ ', text: 'cat focus.txt', type: 'cmd' },
+      { text: 'HTML5, CSS3, JavaScript (ES6+), Next.js · React · Node.js · Supabase\nBuilding for startups, SMBs & e-commerce', type: 'out' },
+      { prompt: '$ ', text: 'status', type: 'cmd' },
+      { text: '● available for new projects', type: 'out-accent' }
+    ];
+
+    function renderStatic() {
+      typeTarget.innerHTML = script.map(s => {
+        if (s.type === 'cmd') return `<div class="line"><span class="prompt">${s.prompt}</span>${s.text}</div>`;
+        if (s.type === 'out-accent') return `<div class="line" style="color:var(--available);">${s.text}</div>`;
+        return `<div class="line out">${s.text}</div>`;
+      }).join('');
+    }
+
+    if (reduceMotion) {
+      renderStatic();
+    } else {
+      let i = 0;
+      function typeLine() {
+        if (i >= script.length) {
+          const caret = document.createElement('span');
+          caret.className = 'caret';
+          typeTarget.appendChild(caret);
+          return;
         }
-      });
-    }, { threshold: 0.12 });
-
-    revealElements.forEach(el => observer.observe(el));
+        const s = script[i];
+        const div = document.createElement('div');
+        div.className = 'line';
+        if (s.type === 'out-accent') div.style.color = 'var(--available)';
+        typeTarget.appendChild(div);
+        let charIndex = 0;
+        const text = s.text;
+        const speed = s.type === 'cmd' ? 55 : 12;
+        function typeChar() {
+          if (charIndex < text.length) {
+            div.innerHTML = (s.type === 'cmd' ? `<span class="prompt">${s.prompt}</span>` : '') + text.slice(0, charIndex + 1).replace(/\n/g, '<br>');
+            charIndex++;
+            setTimeout(typeChar, speed);
+          } else {
+            i++;
+            setTimeout(typeLine, 260);
+          }
+        }
+        typeChar();
+      }
+      setTimeout(typeLine, 400);
+    }
   }
 
-  /* ─── SCROLL TO TOP ─────────────────────────────────────── */
-  const scrollTopBtn = document.getElementById('scroll-top');
-  if (scrollTopBtn) {
-    window.addEventListener('scroll', () => {
-      scrollTopBtn.classList.toggle('visible', window.scrollY > 400);
-    }, { passive: true });
-
-    scrollTopBtn.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  }
-
-  /* ─── PROJECT FILTERING ─────────────────────────────────── */
-  const filterBtns  = document.querySelectorAll('.filter-btn');
-  const projectCards = document.querySelectorAll('.project-card');
-
-  if (filterBtns.length && projectCards.length) {
+  // ---- project filters (projects page / home preview) ----
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const grid = document.getElementById('projectGrid');
+  if (filterBtns.length && grid) {
+    const cards = grid.querySelectorAll('.card');
     filterBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         filterBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-
         const filter = btn.dataset.filter;
-
-        projectCards.forEach(card => {
-          const type = card.dataset.type;
-          const show = filter === 'all' || type === filter;
-          card.setAttribute('data-hidden', String(!show));
-
-          if (show) {
-            card.style.animation = 'none';
-            requestAnimationFrame(() => {
-              card.style.animation = '';
-            });
-          }
+        cards.forEach(card => {
+          const show = filter === 'all' || card.dataset.cat === filter;
+          card.style.display = show ? '' : 'none';
         });
       });
     });
   }
 
-  /* ─── CONTACT FORM VALIDATION ───────────────────────────── */
-  const contactForm = document.getElementById('contact-form');
-  if (contactForm) {
-    const fields = {
-      name:    { el: contactForm.querySelector('#name'),    rule: v => v.trim().length >= 2 },
-      email:   { el: contactForm.querySelector('#email'),   rule: v => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v.trim()) },
-      subject: { el: contactForm.querySelector('#subject'), rule: v => v.trim().length >= 3 },
-      message: { el: contactForm.querySelector('#message'), rule: v => v.trim().length >= 15 },
-    };
+  // ---- contact form validation + simulated submit ----
+  // NOTE: replace the marked block with a real POST (Formspree,
+  // EmailJS, or your own endpoint) before relying on this for leads.
+  const form = document.getElementById('contactForm');
+  if (form) {
+    const submitBtn = document.getElementById('submitBtn');
+    const formStatus = document.getElementById('formStatus');
 
-    function validateField(key) {
-      const { el, rule } = fields[key];
-      if (!el) return true;
-      const valid = rule(el.value);
-      const errEl = document.getElementById(`${key}-error`);
-      el.classList.toggle('error', !valid);
-      if (errEl) errEl.classList.toggle('visible', !valid);
-      return valid;
-    }
-
-    Object.keys(fields).forEach(key => {
-      const el = fields[key].el;
-      if (el) {
-        el.addEventListener('blur', () => validateField(key));
-        el.addEventListener('input', () => {
-          if (el.classList.contains('error')) validateField(key);
-        });
-      }
-    });
-
-    contactForm.addEventListener('submit', (e) => {
+    form.addEventListener('submit', (e) => {
       e.preventDefault();
+      let valid = true;
 
-      const allValid = Object.keys(fields).map(validateField).every(Boolean);
-      if (!allValid) return;
-
-      const submitBtn = contactForm.querySelector('.form-submit');
-      submitBtn.textContent = 'Sending…';
-      submitBtn.disabled = true;
-
-      setTimeout(() => {
-        contactForm.reset();
-        submitBtn.textContent = 'Send Message';
-        submitBtn.disabled = false;
-
-        const successEl = document.getElementById('form-success');
-        if (successEl) {
-          successEl.classList.add('visible');
-          setTimeout(() => successEl.classList.remove('visible'), 5000);
-        }
-      }, 1200);
-    });
-  }
-
-  /* ─── LAZY LOAD IMAGES ──────────────────────────────────── */
-  const lazyImages = document.querySelectorAll('img[loading="lazy"]');
-  if ('IntersectionObserver' in window && lazyImages.length) {
-    const imgObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const img = entry.target;
-          if (img.dataset.src) {
-            img.src = img.dataset.src;
-          }
-          imgObserver.unobserve(img);
+      [...form.querySelectorAll('[required]')].forEach(input => {
+        const fieldWrap = input.closest('.field');
+        if (!input.checkValidity()) {
+          valid = false;
+          if (fieldWrap) fieldWrap.classList.add('error');
+        } else if (fieldWrap) {
+          fieldWrap.classList.remove('error');
         }
       });
-    });
-    lazyImages.forEach(img => imgObserver.observe(img));
-  }
 
-  /* ─── NAVBAR SCROLL EFFECT ──────────────────────────────── */
-  const navbar = document.getElementById('navbar');
-  if (navbar) {
-    window.addEventListener('scroll', () => {
-      navbar.style.boxShadow = window.scrollY > 20 ? 'var(--shadow)' : 'none';
-    }, { passive: true });
-  }
+      const hpField = form.querySelector('[name="company"]');
+      if (hpField && hpField.value) return; // honeypot — likely a bot
 
-  /* ─── MENU TOGGLE ANIMATION ─────────────────────────────── */
-  if (menuToggle) {
-    const spans = menuToggle.querySelectorAll('span');
-    menuToggle.addEventListener('click', () => {
-      const isOpen = menuToggle.classList.contains('active');
-      if (isOpen) {
-        spans[0].style.transform = 'rotate(45deg) translate(5px, 5px)';
-        spans[1].style.opacity = '0';
-        spans[2].style.transform = 'rotate(-45deg) translate(5px, -5px)';
-      } else {
-        spans.forEach(s => { s.style.transform = ''; s.style.opacity = ''; });
+      if (!valid) {
+        formStatus.textContent = 'Please fix the highlighted fields.';
+        formStatus.className = 'form-status';
+        return;
       }
+
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending…';
+      formStatus.textContent = '';
+
+      // ---- REPLACE THIS BLOCK with a real submission ----
+      setTimeout(() => {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send Project Enquiry';
+        formStatus.textContent = "Thanks — I've received your enquiry and will get back to you within 24–48 hours.";
+        formStatus.className = 'form-status success';
+        form.reset();
+        form.querySelectorAll('.field').forEach(f => f.classList.remove('error'));
+      }, 900);
+      // ---- END placeholder submission block ----
     });
   }
+
+  // ---- copy email button (footer, all pages) ----
+  const copyBtn = document.getElementById('copyEmailBtn');
+  if (copyBtn) {
+    copyBtn.addEventListener('click', async () => {
+      const email = 'abdjamizuddin@gmail.com';
+      try {
+        await navigator.clipboard.writeText(email);
+      } catch (err) {
+        // clipboard API unavailable — fail silently, address is still visible
+      }
+      const original = copyBtn.textContent;
+      copyBtn.textContent = 'Email copied ✓';
+      setTimeout(() => { copyBtn.textContent = original; }, 1800);
+    });
+  }
+
 });
