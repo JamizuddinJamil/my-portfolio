@@ -1,269 +1,156 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Contact Abd Jamizuddin — Full Stack Developer. Get in touch for freelance work, collaborations, or just to connect." />
-  <meta name="author" content="Abd Jamizuddin Bin Abd Jamil" />
-  <meta property="og:title" content="Contact — Abd Jamizuddin" />
-  <meta property="og:description" content="Get in touch with Abd Jamizuddin for freelance opportunities, collaborations, or to discuss a project." />
-  <meta property="og:type" content="website" />
-
-  <title>Contact — Abd Jamizuddin</title>
-  <link rel="canonical" href="https://jamizuddinjamil.github.io/portfolio/contact.html" />
-  <link rel="stylesheet" href="css/style.css" />
-
-  <script>
-    (function() {
-      const t = localStorage.getItem('portfolio-theme') || 'light';
-      document.documentElement.setAttribute('data-theme', t);
-    })();
-  </script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact — Abd Jamizuddin</title>
+<meta name="description" content="Get in touch with Abd Jamizuddin about a landing page, company profile website, or web app project.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="theme-light">
 
-  <nav id="navbar" role="navigation" aria-label="Main navigation">
+<header id="site-header">
+  <div class="container">
+    <nav>
+      <a href="index.html" class="logo">AJ<span class="dot">.</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li class="availability"><span class="dot-pulse"></span> Available for new projects</li>
+      </ul>
+      <div class="nav-cta">
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+        <a href="contact.html" class="btn btn-primary">Start Your Project</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section style="padding-top:160px;padding-bottom:40px;">
     <div class="container">
-      <div class="nav-inner">
-        <a href="index.html" class="nav-logo">AJ<span>.</span></a>
-        <ul class="nav-links" role="list">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="projects.html">Projects</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-        <div class="nav-controls">
-          <button id="theme-toggle" aria-label="Toggle dark mode">🌙</button>
-          <button id="menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
-            <span></span><span></span><span></span>
-          </button>
+      <span class="eyebrow">// get in touch</span>
+      <h1 style="font-size:clamp(30px,4vw,44px);margin-top:14px;">Ready to start your project?</h1>
+      <p style="color:var(--text-dim);font-size:17px;max-width:600px;margin-top:14px;">Tell me a little about your project and I'll get back to you with the next steps , within 24–48 hours.</p>
+    </div>
+  </section>
+
+  <section style="padding-top:0;">
+    <div class="container contact-grid">
+      <div class="reveal">
+        <div class="info-row"><span class="k">Email</span><span>abdjamizuddin@gmail.com</span></div>
+        <div class="info-row"><span class="k">WhatsApp</span><span>Tap the chat button in the corner of any page</span></div>
+        <div class="info-row"><span class="k">Location</span><span>Johor, Malaysia 🇲🇾 (remote-friendly)</span></div>
+        <div class="info-row"><span class="k">Response time</span><span>Within 24–48 hours</span></div>
+        <div class="info-row"><span class="k">Find me</span><span><a href="https://github.com/JamizuddinJamil" style="color:var(--accent);font-weight:600;" target="_blank" rel="noopener">GitHub ↗</a></span></div>
+      </div>
+
+      <form id="contactForm" novalidate>
+        <div class="form-row">
+          <div class="field" id="f-name">
+            <label for="name">Name <span class="req">*</span></label>
+            <input type="text" id="name" name="name" minlength="2" required>
+            <div class="err">Please enter your name (min. 2 characters).</div>
+          </div>
+          <div class="field" id="f-email">
+            <label for="email">Work Email <span class="req">*</span></label>
+            <input type="email" id="email" name="email" required>
+            <div class="err">Please enter a valid email address.</div>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="field" id="f-type">
+            <label for="ptype">Project Type <span class="req">*</span></label>
+            <select id="ptype" name="ptype" required>
+              <option value="" selected disabled>Select a project type</option>
+              <option>Landing Page</option>
+              <option>Company Profile Website</option>
+              <option>Web App</option>
+              <option>Not sure yet</option>
+            </select>
+            <div class="err">Please select a project type.</div>
+          </div>
+          <div class="field" id="f-budget">
+            <label for="budget">Estimated Budget <span class="req">*</span></label>
+            <select id="budget" name="budget" required>
+              <option value="" selected disabled>Select a budget range</option>
+              <option>RM 1,500 – RM 3,500</option>
+              <option>RM 3,500 – RM 8,000</option>
+              <option>RM 8,000+</option>
+              <option>Not sure yet</option>
+            </select>
+            <div class="err">Please select a budget range.</div>
+          </div>
+        </div>
+
+        <div class="field" id="f-message">
+          <label for="message">Project Details <span class="req">*</span></label>
+          <textarea id="message" name="message" minlength="15" required placeholder="What are you building, and what does it need to do?"></textarea>
+          <div class="err">Please enter a few details (min. 15 characters).</div>
+        </div>
+
+        <input type="text" name="company" class="hp" tabindex="-1" autocomplete="off">
+
+        <div class="submit-row">
+          <button type="submit" class="btn btn-primary" id="submitBtn">Send Project Enquiry</button>
+          <span class="form-status" id="formStatus"></span>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section-alt">
+    <div class="container">
+      <div class="section-head reveal" style="margin-left:auto;margin-right:auto;text-align:center;">
+        <span class="eyebrow">// faq</span>
+        <h2>A few things people usually ask.</h2>
+      </div>
+      <div class="faq">
+        <div class="faq-item reveal">
+          <h4>How fast can you start?</h4>
+          <p>Usually within a week of agreeing on scope, depending on current workload , I'll give you a real date once I see the project.</p>
+        </div>
+        <div class="faq-item reveal">
+          <h4>Do you require full payment upfront?</h4>
+          <p>No , typically a deposit to begin, with the remainder due on delivery. Exact terms are agreed in the quote.</p>
+        </div>
+        <div class="faq-item reveal">
+          <h4>Can you work with an existing design?</h4>
+          <p>Yes , if you already have a Figma design or brand guidelines, I can build directly from those instead of starting from scratch.</p>
+        </div>
+        <div class="faq-item reveal">
+          <h4>What do you need from me to get started?</h4>
+          <p>A rough idea of what the site/app needs to do, any existing branding, and your content (text/images) , or I can help figure out placeholders if it isn't ready yet.</p>
         </div>
       </div>
     </div>
-  </nav>
+  </section>
+</main>
 
-  <main>
-
-    <!-- ═══ PAGE HERO ═══════════════════════════════════════ -->
-    <header class="page-hero" aria-label="Page header">
-      <div class="container">
-        <p class="section-label">Let's Talk</p>
-        <h1>Get In Touch</h1>
-        <p class="section-sub" style="margin-top: 0.8rem; font-size: 1.1rem;">
-          Open to freelance opportunities, collaborations, and conversations about interesting problems.
-        </p>
-      </div>
-    </header>
-
-    <!-- ═══ CONTACT CONTENT ═══════════════════════════════════ -->
-    <section aria-label="Contact information and form">
-      <div class="container">
-        <div class="contact-grid">
-
-          <!-- Contact Info -->
-          <div class="contact-info reveal">
-            <h3>Let's work on something together</h3>
-            <p>
-              Whether you have a project in mind, need a developer to join your team, or just want to discuss
-              ideas — I'm happy to hear from you. I typically respond within 24–48 hours.
-            </p>
-
-            <div class="contact-details">
-              <div class="detail-row">
-                <div class="detail-icon">📧</div>
-                <div class="detail-text">
-                  <strong>Email</strong>
-                  <a href="mailto:abdjamizuddin@gmail.com">abdjamizuddin@gmail.com</a>
-                </div>
-              </div>
-
-              <div class="detail-row">
-                <div class="detail-icon">📍</div>
-                <div class="detail-text">
-                  <strong>Location</strong>
-                  <span>Johor, Malaysia 🇲🇾</span>
-                </div>
-              </div>
-
-              <div class="detail-row">
-                <div class="detail-icon">⏱️</div>
-                <div class="detail-text">
-                  <strong>Response Time</strong>
-                  <span>Within 24–48 hours</span>
-                </div>
-              </div>
-
-              <div class="detail-row">
-                <div class="detail-icon">🟢</div>
-                <div class="detail-text">
-                  <strong>Availability</strong>
-                  <span>Open to opportunities</span>
-                </div>
-              </div>
-            </div>
-
-            <h4 style="font-family: var(--font-display); font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--text-muted); margin-bottom: 1rem;">
-              Find me online
-            </h4>
-            <div class="social-links-row">
-              <a href="https://github.com/JamizuddinJamil" target="_blank" rel="noopener noreferrer" class="social-link">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/>
-                </svg>
-                GitHub
-              </a>
-              <a href="#" aria-label="LinkedIn profile (coming soon)" class="social-link" style="opacity: 0.6; cursor: not-allowed;">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-                  <rect x="2" y="9" width="4" height="12"/>
-                  <circle cx="4" cy="4" r="2"/>
-                </svg>
-                LinkedIn (Soon)
-              </a>
-            </div>
-          </div>
-
-          <!-- Contact Form -->
-          <div class="contact-form-wrap reveal reveal-delay-2">
-            <h3>Send a Message</h3>
-            <p>Fill in the details below and I'll get back to you promptly.</p>
-
-            <form id="contact-form" novalidate aria-label="Contact form">
-
-              <div class="form-row">
-                <div class="form-group">
-                  <label for="name">Name <span class="required" aria-hidden="true">*</span></label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    placeholder="Your full name"
-                    autocomplete="name"
-                    required
-                    aria-required="true"
-                    aria-describedby="name-error"
-                  />
-                  <span class="field-error" id="name-error" role="alert">Please enter your name (min. 2 characters)</span>
-                </div>
-
-                <div class="form-group">
-                  <label for="email">Email <span class="required" aria-hidden="true">*</span></label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    placeholder="your@email.com"
-                    autocomplete="email"
-                    required
-                    aria-required="true"
-                    aria-describedby="email-error"
-                  />
-                  <span class="field-error" id="email-error" role="alert">Please enter a valid email address</span>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label for="subject">Subject <span class="required" aria-hidden="true">*</span></label>
-                <input
-                  type="text"
-                  id="subject"
-                  name="subject"
-                  placeholder="What's this about?"
-                  required
-                  aria-required="true"
-                  aria-describedby="subject-error"
-                />
-                <span class="field-error" id="subject-error" role="alert">Please enter a subject (min. 3 characters)</span>
-              </div>
-
-              <div class="form-group">
-                <label for="project-type">Type of Enquiry</label>
-                <select id="project-type" name="project-type" aria-label="Type of enquiry">
-                  <option value="" disabled selected>Select enquiry type</option>
-                  <option value="freelance">Freelance Project</option>
-                  <option value="fulltime">Full-time Opportunity</option>
-                  <option value="collaboration">Collaboration</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
-
-              <div class="form-group">
-                <label for="message">Message <span class="required" aria-hidden="true">*</span></label>
-                <textarea
-                  id="message"
-                  name="message"
-                  placeholder="Tell me about your project, timeline, and requirements..."
-                  required
-                  aria-required="true"
-                  aria-describedby="message-error"
-                ></textarea>
-                <span class="field-error" id="message-error" role="alert">Please enter a message (min. 15 characters)</span>
-              </div>
-
-              <button type="submit" class="btn btn-primary form-submit">
-                Send Message →
-              </button>
-
-              <div class="form-success" id="form-success" role="status" aria-live="polite">
-                <h4>Message sent! ✓</h4>
-                <p>Thank you for reaching out. I'll get back to you within 24–48 hours.</p>
-              </div>
-
-            </form>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- ═══ FAQ STRIP ═════════════════════════════════════════ -->
-    <section style="background: var(--bg-alt); border-top: 1px solid var(--border);" aria-label="Frequently asked questions">
-      <div class="container">
-        <div class="reveal" style="max-width: 680px;">
-          <p class="section-label">FAQs</p>
-          <h2 class="section-title">Common Questions</h2>
-        </div>
-
-        <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 3rem;">
-          <div class="value-card reveal">
-            <h4>Are you available for freelance?</h4>
-            <p>Yes — I'm currently open to freelance projects. Landing pages, web apps, APIs, and backend integrations are all in scope.</p>
-          </div>
-          <div class="value-card reveal reveal-delay-1">
-            <h4>What is your typical response time?</h4>
-            <p>I aim to respond to all messages within 24–48 hours on business days.</p>
-          </div>
-          <div class="value-card reveal reveal-delay-2">
-            <h4>Do you work remotely?</h4>
-            <p>Yes — fully remote. I'm based in Johor, Malaysia but work across time zones without issue.</p>
-          </div>
-          <div class="value-card reveal reveal-delay-3">
-            <h4>What kind of projects interest you?</h4>
-            <p>Projects with clear business requirements, a need for reliable architecture, and real users. I prefer work where quality matters.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <footer role="contentinfo">
-    <div class="container">
-      <div class="footer-inner">
-        <div class="footer-brand">AJ<span>.</span></div>
-        <p class="footer-copy">© 2024 Abd Jamizuddin Bin Abd Jamil. All rights reserved.</p>
-        <nav class="footer-links" aria-label="Footer navigation">
-          <a href="about.html">About</a>
-          <a href="projects.html">Projects</a>
-          <a href="blog.html">Blog</a>
-          <a href="contact.html">Contact</a>
-        </nav>
-      </div>
+<footer>
+  <div class="container footer-row">
+    <div>
+      <span class="logo">AJ<span class="dot">.</span></span>
+      <p style="color:var(--text-dim);font-size:13px;margin-top:6px;">© 2025 Abd Jamizuddin Bin Abd Jamil. All rights reserved.</p>
     </div>
-  </footer>
+    <div class="footer-links">
+      <a href="about.html">About</a>
+      <a href="projects.html">Projects</a>
+      <a href="services.html">Services</a>
+      <a href="https://github.com/JamizuddinJamil" target="_blank" rel="noopener">GitHub</a>
+    </div>
+    <button class="copy-email" id="copyEmailBtn">📧 abdjamizuddin@gmail.com</button>
+  </div>
+</footer>
 
-  <button id="scroll-top" aria-label="Scroll to top">↑</button>
-  <script src="js/main.js"></script>
+<script src="js/main.js"></script>
+<script src="js/whatsapp.js"></script>
 </body>
 </html>

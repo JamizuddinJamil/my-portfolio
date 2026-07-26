@@ -1,191 +1,240 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Projects by Abd Jamizuddin — Full Stack web development projects including landing pages, web apps, and APIs." />
-  <meta name="author" content="Abd Jamizuddin Bin Abd Jamil" />
-  <meta property="og:title" content="Projects — Abd Jamizuddin" />
-  <meta property="og:description" content="A showcase of web development projects built with HTML, CSS, JavaScript, Node.js, and more." />
-  <meta property="og:type" content="website" />
-
-  <title>Projects — Abd Jamizuddin</title>
-  <link rel="canonical" href="https://jamizuddinjamil.github.io/portfolio/projects.html" />
-  <link rel="stylesheet" href="css/style.css" />
-
-  <script>
-    (function() {
-      const t = localStorage.getItem('portfolio-theme') || 'light';
-      document.documentElement.setAttribute('data-theme', t);
-    })();
-  </script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects — Abd Jamizuddin</title>
+<meta name="description" content="Live projects by Abd Jamizuddin: a full-stack PWA, a business landing page, and a conversion-focused product page.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
 </head>
-<body>
+<body class="theme-light">
 
-  <nav id="navbar" role="navigation" aria-label="Main navigation">
+<header id="site-header">
+  <div class="container">
+    <nav>
+      <a href="index.html" class="logo">AJ<span class="dot">.</span></a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="about.html">About</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li class="availability"><span class="dot-pulse"></span> Available for new projects</li>
+      </ul>
+      <div class="nav-cta">
+        <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">☰</button>
+        <a href="contact.html" class="btn btn-primary">Start Your Project</a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <section style="padding-top:160px;padding-bottom:40px;">
     <div class="container">
-      <div class="nav-inner">
-        <a href="index.html" class="nav-logo">AJ<span>.</span></a>
-        <ul class="nav-links" role="list">
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="projects.html">Projects</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-        <div class="nav-controls">
-          <button id="theme-toggle" aria-label="Toggle dark mode">🌙</button>
-          <button id="menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
-            <span></span><span></span><span></span>
-          </button>
-        </div>
-      </div>
+      <span class="eyebrow">// projects</span>
+      <h1 style="font-size:clamp(32px,4.4vw,48px);margin-top:14px;">Real projects, shipped and live.</h1>
+      <p style="color:var(--text-dim);font-size:17px;max-width:600px;margin-top:14px;">Every project below is live , click through and use it yourself. No mockups pretending to be finished products.</p>
     </div>
-  </nav>
+  </section>
 
-  <main>
-
-    <!-- ═══ PAGE HERO ═══════════════════════════════════════ -->
-    <header class="page-hero" aria-label="Page header">
-      <div class="container">
-        <p class="section-label">What I've Built</p>
-        <h1>Projects</h1>
-        <p class="section-sub" style="margin-top: 0.8rem; font-size: 1.1rem;">
-          Real-world projects built to solve specific problems — from landing pages to full-stack web apps.
-        </p>
+  <section style="padding-top:0;">
+    <div class="container">
+      <div class="filters reveal">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="webapp">Web Apps / SaaS</button>
+        <button class="filter-btn" data-filter="landing">Landing Pages</button>
       </div>
-    </header>
 
-    <!-- ═══ PROJECTS ══════════════════════════════════════════ -->
-    <section aria-label="Project showcase">
-      <div class="container">
+      <div class="bento" id="projectGrid">
 
-        <!-- Filter Bar -->
-        <div class="filter-bar reveal" role="group" aria-label="Filter projects">
-          <button class="filter-btn active" data-filter="all">All Projects</button>
-          <button class="filter-btn" data-filter="static">Static</button>
-          <button class="filter-btn" data-filter="dynamic">Dynamic</button>
-          <button class="filter-btn" data-filter="pwa">PWA</button>
-        </div>
-
-        <!-- Projects Grid -->
-        <div class="projects-grid" role="list">
-
-          <!-- Project 1 -->
-          <article class="project-card reveal" data-type="static" role="listitem">
-            <div class="project-thumb">
-              <img 
-                src="assets/images/legasi-yz-mockup.png" 
-                alt="Legasi YZ Transport Website Screenshot"
-                class="featured-img"
-                loading="lazy"
-              />
-              <div class="project-thumb-overlay">
-                <a href="https://jamizuddinjamil.github.io/legasi-yz-transport/" target="_blank" rel="noopener noreferrer">Live Demo</a>
-                <a href="https://github.com/JamizuddinJamil" target="_blank" rel="noopener noreferrer">GitHub</a>
+        <article class="card reveal" data-cat="webapp">
+          <div class="card-media">
+            <div class="browser-frame">
+              <div class="browser-top"><i></i><i></i><i></i></div>
+              <div class="shot-frame">
+                <img src="assets/images/akaun-saya-mockup.png" alt="AkaunSaya.my Expense Tracker screenshot" style="object-position:contain;" loading="lazy">
               </div>
             </div>
-            <div class="project-body">
-              <p class="project-type">Landing Page</p>
-              <h3>Legasi YZ Transport</h3>
-              <p>
-                A professional car rental landing page designed to present services clearly and increase customer inquiries.
-                Built with a focus on responsive design, semantic structure, and clean layout.
-              </p>
-              <div class="project-tech" style="display:flex; flex-wrap:wrap; gap:0.4rem; margin-bottom:0;">
-                <span class="tech-tag">HTML</span>
-                <span class="tech-tag">CSS</span>
-                <span class="tech-tag">JavaScript</span>
-              </div>
-            </div>
-            <div class="project-footer">
-              <div class="project-links">
-                <a href="https://jamizuddinjamil.github.io/legasi-yz-transport/" target="_blank" rel="noopener noreferrer" class="project-link">
-                  ↗ Live Demo
-                </a>
-                <a href="https://github.com/JamizuddinJamil" target="_blank" rel="noopener noreferrer" class="project-link">
-                  ⌥ GitHub
-                </a>
-              </div>
-              <span style="font-size: 0.75rem; color: var(--text-muted);">2024</span>
-            </div>
-          </article>
-
-          <!-- Project 2: Akaun Saya PWA -->
-          <article class="project-card reveal reveal-delay-1" data-type="pwa" role="listitem">
-            <div class="project-thumb">
-              <img 
-                src="assets/images/akaun-saya-mockup.png" 
-                alt="AkaunSaya.my Expense Tracker Screenshot"
-                class="featured-img"
-                loading="lazy"
-              />
-              <div class="project-thumb-overlay">
-                <a href="https://akaun-saya.vercel.app/login" target="_blank" rel="noopener noreferrer">Live Demo</a>
-                <a href="https://github.com/JamizuddinJamil" target="_blank" rel="noopener noreferrer">GitHub</a>
-              </div>
-            </div>
-            <div class="project-body">
-              <p class="project-type">PWA · Full Stack App</p>
-              <h3>AkaunSaya.my</h3>
-              <p>
-                A Progressive Web App for personal expense tracking. Features user authentication, real-time data sync,
-                and a clean mobile-first UI — installable as a native-like app on any device.
-              </p>
-              <div class="project-tech" style="display:flex; flex-wrap:wrap; gap:0.4rem; margin-bottom:0;">
-                <span class="tech-tag">Next.js</span>
-                <span class="tech-tag">React</span>
-                <span class="tech-tag">Tailwind CSS</span>
-                <span class="tech-tag">Supabase</span>
-                <span class="tech-tag">Vercel</span>
-                <span class="tech-tag">Vite</span>
-              </div>
-            </div>
-            <div class="project-footer">
-              <div class="project-links">
-                <a href="https://akaun-saya.vercel.app/login" target="_blank" rel="noopener noreferrer" class="project-link">
-                  ↗ Live Demo
-                </a>
-                <a href="https://github.com/JamizuddinJamil" target="_blank" rel="noopener noreferrer" class="project-link">
-                  ⌥ GitHub
-                </a>
-              </div>
-              <span style="font-size: 0.75rem; color: var(--text-muted);">2025</span>
-            </div>
-          </article>
-
-          <!-- Placeholder: More projects coming soon -->
-
           </div>
+          <div class="card-body">
+            <span class="card-cat">Web App · PWA</span>
+            <h3>AkaunSaya.my , Expense Tracker</h3>
+            <p>A Progressive Web App for personal expense tracking with authentication and real-time sync , installable on any device, mobile-first from the ground up.</p>
+            <div class="stack-row">
+              <span class="tag">Next.js</span><span class="tag">React</span><span class="tag">Supabase</span><span class="tag">Tailwind</span><span class="tag">Vercel</span>
+            </div>
+            <div class="metric-row">
+              <span class="metric">Installable PWA</span><span class="metric">Real-time sync</span>
+            </div>
+            <div class="card-links">
+              <a href="https://akaun-saya.vercel.app/login" target="_blank" rel="noopener">Live Demo →</a>
+              <a href="https://github.com/JamizuddinJamil" target="_blank" rel="noopener">GitHub</a>
+            </div>
+          </div>
+        </article>
 
-        <!-- CTA -->
-        <div class="reveal" style="text-align:center; margin-top: 4rem; padding: 3rem; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-lg);">
-          <h3 style="color: var(--text); margin-bottom: 0.6rem;">More projects in progress</h3>
-          <p style="margin-bottom: 1.5rem;">I'm continuously building. Follow my GitHub for the latest work.</p>
-          <a href="https://github.com/JamizuddinJamil" target="_blank" rel="noopener noreferrer" class="btn btn-primary">View GitHub Profile →</a>
-        </div>
+        <article class="card reveal" data-cat="landing">
+          <div class="card-media">
+            <div class="browser-frame">
+              <div class="browser-top"><i></i><i></i><i></i></div>
+              <div class="shot-frame">
+                <img src="assets/images/legasi-yz-mockup.png" alt="Legasi YZ Transport screenshot" style="object-position:center;" loading="lazy">
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <span class="card-cat">Landing Page · Business</span>
+            <h3>Legasi YZ Transport</h3>
+            <p>A car rental landing page built to present services clearly and drive customer enquiries, with a focus on responsive, semantic layout.</p>
+            <div class="stack-row">
+              <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span>
+            </div>
+            <div class="metric-row">
+              <span class="metric">Fully responsive</span><span class="metric">Semantic markup</span>
+            </div>
+            <div class="card-links">
+              <a href="https://jamizuddinjamil.github.io/legasi-yz-transport/" target="_blank" rel="noopener">Live Demo →</a>
+              <a href="https://github.com/JamizuddinJamil" target="_blank" rel="noopener">GitHub</a>
+            </div>
+          </div>
+        </article>
 
-      </div>
-    </section>
+        <article class="card reveal" data-cat="landing">
+          <div class="card-media">
+            <div class="browser-frame">
+              <div class="browser-top"><i></i><i></i><i></i></div>
+              <div class="shot-frame">
+                <img src="assets/images/greencharge-mockup.png" alt="GreenCharge Solar Charger screenshot" style="object-position:center;" loading="lazy">
+              </div>
+            </div>
+          </div>
+          <div class="card-body">
+            <span class="card-cat">Landing Page · Conversion</span>
+            <h3>GreenCharge , Solar Charger</h3>
+            <p>A conversion-focused product landing page for a portable solar charger, with a countdown timer, scroll-reveal animation, and email capture.</p>
+            <div class="stack-row">
+              <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span>
+            </div>
+            <div class="metric-row">
+              <span class="metric">Email capture</span><span class="metric">Scroll animations</span>
+            </div>
+            <div class="card-links">
+              <a href="https://jamizuddinjamil.github.io/greencharge-landing/" target="_blank" rel="noopener">Live Demo →</a>
+              <a href="https://github.com/JamizuddinJamil" target="_blank" rel="noopener">GitHub</a>
+            </div>
+          </div>
+        </article>
 
-  </main>
-
-  <footer role="contentinfo">
-    <div class="container">
-      <div class="footer-inner">
-        <div class="footer-brand">AJ<span>.</span></div>
-        <p class="footer-copy">© 2024 Abd Jamizuddin Bin Abd Jamil. All rights reserved.</p>
-        <nav class="footer-links" aria-label="Footer navigation">
-          <a href="about.html">About</a>
-          <a href="projects.html">Projects</a>
-          <a href="blog.html">Blog</a>
-          <a href="contact.html">Contact</a>
-        </nav>
       </div>
     </div>
-  </footer>
+  </section>
 
-  <button id="scroll-top" aria-label="Scroll to top">↑</button>
-  <script src="js/main.js"></script>
+  <!-- PROCESS -->
+  <section class="section-alt" id="process">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">// how we'd work together</span>
+        <h2>A clear process, start to finish.</h2>
+        <p>No surprises , you'll know what's happening at every stage.</p>
+      </div>
+      <div class="process-grid">
+        <div class="process-card reveal">
+          <div class="process-num">01 / Discovery &amp; Scope</div>
+          <h3>We define the goal</h3>
+          <p>We talk through what the site or app needs to do, who it's for, and what "done" looks like , then I put together a clear scope and timeline before any code is written.</p>
+        </div>
+        <div class="process-card reveal">
+          <div class="process-num">02 / Design &amp; Build</div>
+          <h3>You see progress as it happens</h3>
+          <p>I build in stages with preview links along the way, so you're never waiting until the end to see what you're getting. Feedback gets folded in as we go.</p>
+        </div>
+        <div class="process-card reveal">
+          <div class="process-num">03 / Launch &amp; Handover</div>
+          <h3>You get a working, documented site</h3>
+          <p>Before launch: responsive checks, performance pass, and basic SEO. After launch: a short handover so you know how to update content yourself, plus support if something needs fixing.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROOF -->
+  <section>
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="eyebrow">// why work with me</span>
+        <h2>No fake reviews here , just how I actually work.</h2>
+        <p>I'd rather show you exactly how I approach a project than fabricate testimonials I don't have yet.</p>
+      </div>
+      <div class="proof-grid">
+        <div class="proof-list reveal">
+          <div class="proof-item">
+            <span class="ico">→</span>
+            <div><h4>I build the whole stack, not just the front end</h4><p>Frontend, backend, database, and deployment , one person who understands how the pieces connect.</p></div>
+          </div>
+          <div class="proof-item">
+            <span class="ico">→</span>
+            <div><h4>Every project here is live , try it yourself</h4><p>No mockups pretending to be finished products. Click any demo link above and use the real thing.</p></div>
+          </div>
+          <div class="proof-item">
+            <span class="ico">→</span>
+            <div><h4>I scope before I build</h4><p>You get a clear idea of timeline and deliverables up front , not an open-ended engagement that quietly expands.</p></div>
+          </div>
+          <div class="proof-item">
+            <span class="ico">→</span>
+            <div><h4>Remote-first, async-friendly</h4><p>Based in Johor, Malaysia, working comfortably with clients across time zones via written updates and preview links.</p></div>
+          </div>
+        </div>
+
+        <div class="case-card reveal">
+          <span class="eyebrow">case study , akaunsaya.my</span>
+          <h3 style="font-size:20px;margin-top:8px;">Personal expense tracker, built to feel like a product</h3>
+          <p style="color:var(--text-dim);font-size:14.5px;margin-top:10px;">Built as a full PWA rather than a basic form-and-list app , the kind of attention to detail a client project gets.</p>
+          <dl class="case-row">
+            <dt>Problem</dt><dd>Needed a way to track daily expenses that actually felt fast enough to use every day, on mobile.</dd>
+            <dt>Approach</dt><dd>PWA architecture so it installs like a native app, with offline-friendly UI and real-time sync.</dd>
+            <dt>Stack</dt><dd>Next.js, React, Supabase, Tailwind CSS, deployed on Vercel.</dd>
+            <dt>Outcome</dt><dd>Installable, mobile-first app with authenticated real-time data , live and in daily use.</dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="cta-band reveal">
+        <h2>Have a project in mind?</h2>
+        <p>Tell me what you're building and I'll get back to you within 24–48 hours with a clear next step.</p>
+        <div class="cta-actions">
+          <a href="contact.html" class="btn btn-primary">Start a Conversation</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="container footer-row">
+    <div>
+      <span class="logo">AJ<span class="dot">.</span></span>
+      <p style="color:var(--text-dim);font-size:13px;margin-top:6px;">© 2025 Abd Jamizuddin Bin Abd Jamil. All rights reserved.</p>
+    </div>
+    <div class="footer-links">
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="contact.html">Contact</a>
+      <a href="https://github.com/JamizuddinJamil" target="_blank" rel="noopener">GitHub</a>
+    </div>
+    <button class="copy-email" id="copyEmailBtn">📧 abdjamizuddin@gmail.com</button>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+<script src="js/whatsapp.js"></script>
 </body>
 </html>
