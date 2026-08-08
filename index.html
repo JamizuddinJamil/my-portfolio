@@ -64,7 +64,7 @@
           <a href="projects.html" class="btn btn-secondary">View Case Studies</a>
         </div>
         <div class="hero-stats">
-          <div class="stat"><b>3+</b><span>Live projects shipped</span></div>
+          <div class="stat"><b>4+</b><span>Live projects shipped</span></div>
           <div class="stat"><b>Full-stack</b><span>Frontend to database</span></div>
           <div class="stat"><b>Remote</b><span>Works across time zones</span></div>
         </div>
@@ -118,92 +118,52 @@
     </div>
   </section>
 
-  <!-- FEATURED WORK PREVIEW -->
+<!-- FEATURED WORK PREVIEW -->
   <section class="section-alt" id="work">
     <div class="container">
       <div class="section-head reveal">
         <span class="eyebrow">// featured work</span>
         <h2>Real projects, shipped and live.</h2>
-        <p>Every project is live , click through and use it yourself.</p>
+        <p>Every project is live — click through and use it yourself.</p>
       </div>
 
-      <div class="bento">
-        <article class="card reveal">
-          <div class="card-media">
-            <div class="browser-frame">
-              <div class="browser-top"><i></i><i></i><i></i></div>
-              <div class="mock-body">
-                <img src="assets/images/akaun-saya-mockup.png" alt="Screenshot of AkaunSaya.my web app" style="width:100%;height:auto;display:block;">
-                <div class="mock-line short accent"></div>
-                <div class="mock-line"></div>
-                <div class="mock-line" style="width:70%"></div>
-                <div class="mock-block"></div>
-              </div>
-            </div>
-          </div>
-          <div class="card-body">
-            <span class="card-cat">Web App · PWA</span>
-            <h3>AkaunSaya.my , Expense Tracker</h3>
-            <p>A Progressive Web App for personal expense tracking with authentication and real-time sync.</p>
-            <div class="stack-row">
-              <span class="tag">Next.js</span><span class="tag">Supabase</span><span class="tag">Vercel</span>
-            </div>
-            <div class="card-links">
-              <a href="https://akaun-saya.vercel.app/login" target="_blank" rel="noopener">Live Demo →</a>
-            </div>
-          </div>
-        </article>
+      <div class="work-carousel reveal">
+        <button class="carousel-arrow carousel-arrow-left" id="carouselPrev" aria-label="Previous project">‹</button>
 
-        <article class="card reveal">
-          <div class="card-media">
-            <div class="browser-frame">
-              <div class="browser-top"><i></i><i></i><i></i></div>
-              <div class="mock-body">
-                <img src="assets/images/legasi-yz-mockup.png" alt="Screenshot of Legasi YZ Transport landing page" style="width:100%;height:auto;display:block;">
-                <div class="mock-line short accent"></div>
-                <div class="mock-line"></div>
-                <div class="mock-block" style="height:60px;"></div>
-              </div>
-            </div>
-          </div>
-          <div class="card-body">
-            <span class="card-cat">Landing Page · Business</span>
-            <h3>Legasi YZ Transport</h3>
-            <p>A car rental landing page built to present services clearly and drive enquiries.</p>
-            <div class="stack-row">
-              <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span>
-            </div>
-            <div class="card-links">
-              <a href="https://jamizuddinjamil.github.io/legasi-yz-transport/" target="_blank" rel="noopener">Live Demo →</a>
-            </div>
-          </div>
-        </article>
+        <div class="carousel-viewport">
+          <div class="carousel-track" id="carouselTrack">
 
-        <article class="card reveal">
-          <div class="card-media">
-            <div class="browser-frame">
-              <div class="browser-top"><i></i><i></i><i></i></div>
-              <div class="mock-body">
-                <img src="assets/images/greencharge-mockup.png" alt="Screenshot of GreenCharge solar charger landing page" style="width:100%;height:auto;display:block;"> 
-                <div class="mock-line short accent"></div>
-                <div class="mock-line" style="width:55%"></div>
-                <div class="mock-block"></div>
-              </div>
-            </div>
+            <a class="carousel-slide" href="https://akaun-saya.vercel.app/login" target="_blank" rel="noopener">
+              <img src="assets/images/akaun-saya-mockup.png" alt="AkaunSaya.my — Expense Tracker">
+              <span class="carousel-cta">Live Demo →</span>
+              <span class="carousel-caption">AkaunSaya.my — Expense Tracker</span>
+            </a>
+
+            <a class="carousel-slide" href="https://jamizuddinjamil.github.io/legasi-yz-transport/" target="_blank" rel="noopener">
+              <img src="assets/images/legasi-yz-mockup.png" alt="Legasi YZ Transport">
+              <span class="carousel-cta">Live Demo →</span>
+              <span class="carousel-caption">Legasi YZ Transport</span>
+            </a>
+
+            <a class="carousel-slide" href="https://jamizuddinjamil.github.io/greencharge-landing/" target="_blank" rel="noopener">
+              <img src="assets/images/greencharge-mockup.png" alt="GreenCharge — Solar Charger">
+              <span class="carousel-cta">Live Demo →</span>
+              <span class="carousel-caption">GreenCharge — Solar Charger</span>
+            </a>
+
+            <a class="carousel-slide" href="https://figmotorgarage.netlify.app/" target="_blank" rel="noopener">
+              <img src="assets/images/fiq-motor-mockup.png" alt="Fiq Motor Garage">
+              <span class="carousel-cta">Live Demo →</span>
+              <span class="carousel-caption">Fiq Motor Garage</span>
+            </a>
+
           </div>
-          <div class="card-body">
-            <span class="card-cat">Landing Page · Conversion</span>
-            <h3>GreenCharge , Solar Charger</h3>
-            <p>A conversion-focused product landing page with countdown timer and email capture.</p>
-            <div class="stack-row">
-              <span class="tag">HTML</span><span class="tag">CSS</span><span class="tag">JavaScript</span>
-            </div>
-            <div class="card-links">
-              <a href="https://jamizuddinjamil.github.io/greencharge-landing/" target="_blank" rel="noopener">Live Demo →</a>
-            </div>
-          </div>
-        </article>
+        </div>
+
+        <button class="carousel-arrow carousel-arrow-right" id="carouselNext" aria-label="Next project">›</button>
       </div>
+
+      <div class="carousel-dots" id="carouselDots"></div>
 
       <div style="text-align:center;margin-top:40px;">
         <a href="projects.html" class="btn btn-secondary">See All Projects →</a>
@@ -247,5 +207,6 @@
 <script src="js/main.js"></script>
 <script src="js/whatsapp.js"></script>
 <script src="js/promo-modal.js"></script>
+<script src="js/work-carousel.js"></script>
 </body>
 </html>
